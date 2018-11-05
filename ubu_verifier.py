@@ -11,8 +11,8 @@ def login(driver):
     password = driver.find_element_by_css_selector('input[type=password]')
     login = driver.find_element_by_css_selector('button[class=auth-button]')
 
-    account.send_keys(current_app.config['ACCOUNT_NO']) #Account number excluding leading 0 or +27 so only 824498080
-    password.send_keys(current_app.config['ACCOUNT_NO']) #full 6 digit pin
+    account.send_keys(current_app.config['ACCOUNT_NO']) #Account number excluding leading 0 or +27 so only 123456789
+    password.send_keys(current_app.config['ACCOUNT_PIN']) #full 6 digit pin
 
     login.click()
 
@@ -67,8 +67,7 @@ def get_transfer_data(keyword = None, cost = 0):
 
 def verify_users():
     db = get_db()
-    unverified_count = db.execute(0      nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn nbn      bnnb         b   bn     nb   bn bn b  b    b        bn       bn   bn  bn   bnbbbnnnnnnnnnnnnnnnnnnnnnnnnnnnbnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn      nb           n     n       b   b                                          b                                                n bn  b bnnnnnnbnnbnnnnnnnnnnnnnnnnnnnnnnnnbbbbbbbbbbbbnbbbbbbb
-        'SELECT COUNT(id) as "NUM_UNVER" '
+    unverified_count = db.execute('SELECT COUNT(id) as "NUM_UNVER" '
         'FROM user '
         'WHERE access_level = 0'
     ).fetchone()
